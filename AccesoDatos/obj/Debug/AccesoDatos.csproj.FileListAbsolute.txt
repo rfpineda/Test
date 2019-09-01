@@ -1,0 +1,2 @@
+C:\Users\pipex\Tabajo Personal y Laboral\Proyectos de Prueba\ABC\AccesoDatos\obj\Debug\AccesoDatos.csprojAssemblyReference.cache
+C:\Users\pipex\Tabajo Personal y Laboral\Proyectos de Prueba\ABC\AccesoDatos\obj\Debug\AccesoDatos.csproj.CoreCompileInputs.cache
