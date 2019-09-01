@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base.cs" />
+    <Compile Include="FacturaProductoAD.cs" />
+    <Compile Include="PerfilAD.cs" />
+    <Compile Include="EmpleadoPerfilAD.cs" />
     <Compile Include="ProductoAD.cs" />
     <Compile Include="FacturaAD.cs" />
     <Compile Include="ClienteAD.cs" />

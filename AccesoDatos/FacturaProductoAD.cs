@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos
 {
-    public class ProductoAD : Base
+    public class FacturaProductoAD : Base
     {
-        public ProductoAD() : base()
+        public FacturaProductoAD() : base()
         {
 
         }
-        public Producto ObtenerProducto(int idProducto)
+        public FacturaProducto ObtenerFacturaProducto(int idFacturaProducto)
         {
-            Producto producto = new Producto();
+            FacturaProducto facturaProducto = new FacturaProducto();
             using (var bd = new Base())
             {
                 try
@@ -27,16 +27,17 @@ namespace AccesoDatos
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ObtenerProducto";
-                    comando.Parameters.Add(new SqlParameter("@idProducto", idProducto));
+                    comando.CommandText = "ObtenerFacturaProducto";
+                    comando.Parameters.Add(new SqlParameter("@idFacturaProducto", idFacturaProducto));
                     reader = comando.ExecuteReader();
                     try
                     {
                         if (reader.Read())
                         {
-                            producto.IdProducto = Convert.ToInt32(reader["IdProducto"]);
-                            producto.Nombre = Convert.ToString(reader["Nombre"]);
-                            producto.Descripcion = Convert.ToString(reader["Descripcion"]);
+                            facturaProducto.Cantidad = Convert.ToInt32(reader["Cantidad"]);
+
+                            facturaProducto.Factura = new Factura() { IdFactura = Convert.ToInt32(reader["IdFactura"]) };
+                            facturaProducto.Producto = new Producto() { IdProducto = Convert.ToInt32(reader["IdProducto"]) };
                         }
                     }
                     finally
@@ -52,11 +53,11 @@ namespace AccesoDatos
                     throw;
                 }
             }
-            return producto;
+            return facturaProducto;
         }
-        public List<Producto> ListarProductos()
+        public List<FacturaProducto> ListarFacturaProductos()
         {
-            List<Producto> productos = new List<Producto>();
+            List<FacturaProducto> facturaProductos = new List<FacturaProducto>();
             using (var bd = new Base())
             {
                 try
@@ -66,20 +67,20 @@ namespace AccesoDatos
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ListarProducto";
+                    comando.CommandText = "ListarFacturaProducto";
                     reader = comando.ExecuteReader();
                     try
                     {
-                        Producto producto;
+                        FacturaProducto facturaProducto;
                         while (reader.Read())
                         {
-                            producto = new Producto()
+                            facturaProducto = new FacturaProducto()
                             {
-                                IdProducto = Convert.ToInt32(reader["IdProducto"]),
-                                Nombre = Convert.ToString(reader["Nombre"]),
-                                Descripcion = Convert.ToString(reader["Descripcion"])
+                                Cantidad = Convert.ToInt32(reader["Cantidad"]),
+                                Factura = new Factura() { IdFactura = Convert.ToInt32(reader["IdFactura"]) },
+                                Producto = new Producto() { IdProducto = Convert.ToInt32(reader["IdProducto"]) }
                             };
-                            productos.Add(producto);
+                            facturaProductos.Add(facturaProducto);
                         };
                     }
                     finally
@@ -101,9 +102,9 @@ namespace AccesoDatos
                     throw;
                 }
             }
-            return productos;
+            return facturaProductos;
         }
-        public void InsertarProducto(Producto producto)
+        public void InsertarFacturaProducto(FacturaProducto facturaProducto)
         {
             using (var bd = new Base())
             {
@@ -113,9 +114,10 @@ namespace AccesoDatos
 
                     SqlCommand comando = new SqlCommand();
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "InsertarProducto";
-                    comando.Parameters.Add(new SqlParameter("@nombre", producto.Nombre));
-                    comando.Parameters.Add(new SqlParameter("@descripcion", producto.Descripcion));
+                    comando.CommandText = "InsertarFacturaProducto";
+                    comando.Parameters.Add(new SqlParameter("@cantidad", facturaProducto.Cantidad));
+                    comando.Parameters.Add(new SqlParameter("@idFactura", facturaProducto.Factura.IdFactura));
+                    comando.Parameters.Add(new SqlParameter("@idProducto", facturaProducto.Producto.IdProducto));
                     comando.ExecuteNonQuery();
 
                     bd.ConfirmarTransaccion();
@@ -127,7 +129,7 @@ namespace AccesoDatos
                 }
             }
         }
-        public void ActualizarProducto(Producto producto)
+        public void EliminarFacturaProductoPorFactura(int idFacturaProducto)
         {
             using (var bd = new Base())
             {
@@ -137,33 +139,8 @@ namespace AccesoDatos
 
                     SqlCommand comando = new SqlCommand();
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ActualizarProducto";
-                    comando.Parameters.Add(new SqlParameter("@idProducto", producto.IdProducto));
-                    comando.Parameters.Add(new SqlParameter("@nombre", producto.Nombre));
-                    comando.Parameters.Add(new SqlParameter("@idUsuario", producto.Descripcion));
-                    comando.ExecuteNonQuery();
-
-                    bd.ConfirmarTransaccion();
-                }
-                catch (Exception)
-                {
-                    bd.RevertirTransaccion();
-                    throw;
-                }
-            }
-        }
-        public void EliminarProducto(int idProducto)
-        {
-            using (var bd = new Base())
-            {
-                try
-                {
-                    bd.IniciarTransaccion();
-
-                    SqlCommand comando = new SqlCommand();
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "EliminarProducto";
-                    comando.Parameters.Add(new SqlParameter("@idFactura", idProducto));
+                    comando.CommandText = "EliminarFacturaProductoPorFactura";
+                    comando.Parameters.Add(new SqlParameter("@idFacturaProducto", idFacturaProducto));
                     comando.ExecuteNonQuery();
 
                     bd.ConfirmarTransaccion();

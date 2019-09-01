@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccesoDatos;
+using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +20,7 @@ namespace LogicaNegocio
                     if (producto == null)
                         throw new ArgumentNullException("producto");
 
-                    new ProductoAD().ActualizarEmpleado(producto);
+                    new ProductoAD().ActualizarProducto(producto);
                 }
                 catch (Exception ex)
                 {
@@ -26,16 +28,16 @@ namespace LogicaNegocio
                 }
             });
         }
-        public static Task EliminarEmpleado(string idUsuario)
+        public static Task EliminarProducto(int idProducto)
         {
             return Task.Run(() =>
             {
                 try
                 {
-                    if (idUsuario.Equals(""))
-                        throw new ArgumentNullException("empleado");
+                    if (idProducto.Equals(""))
+                        throw new ArgumentNullException("idProducto");
 
-                    new EmpleadoAD().EliminarEmpleado(idUsuario);
+                    new ProductoAD().EliminarProducto(idProducto);
                 }
                 catch (Exception ex)
                 {
@@ -43,16 +45,16 @@ namespace LogicaNegocio
                 }
             });
         }
-        public static Task InsertarUsuario(Empleado empleado)
+        public static Task InsertarProducto(Producto producto)
         {
             return Task.Run(() =>
             {
                 try
                 {
-                    if (empleado == null)
-                        throw new ArgumentNullException("empleado");
+                    if (producto == null)
+                        throw new ArgumentNullException("producto");
 
-                    new EmpleadoAD().InsertarEmpleado(empleado);
+                    new ProductoAD().InsertarProducto(producto);
                 }
                 catch (Exception ex)
                 {
@@ -60,40 +62,40 @@ namespace LogicaNegocio
                 }
             });
         }
-        public static Task<List<Empleado>> ListarEmpleado()
+        public static Task<List<Producto>> ListarProducto()
         {
             return Task.Run(() =>
             {
-                List<Empleado> empleados;
+                List<Producto> productos;
 
                 try
                 {
-                    empleados = new EmpleadoAD().ListarEmpleados();
+                    productos = new ProductoAD().ListarProductos();
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
 
-                return empleados;
+                return productos;
             });
         }
-        public static Task<Empleado> ObtenerEmpleado(string idEmpleado)
+        public static Task<Producto> ObtenerProducto(int idProducto)
         {
             return Task.Run(() =>
             {
-                Empleado empleado;
+                Producto producto;
 
                 try
                 {
-                    empleado = new EmpleadoAD().ObtenerEmpleado(idEmpleado);
+                    producto = new ProductoAD().ObtenerProducto(idProducto);
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
 
-                return empleado;
+                return producto;
             });
         }
         #endregion

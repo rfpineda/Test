@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos
 {
-    public class ProductoAD : Base
+    public class EmpleadoPerfilAD : Base
     {
-        public ProductoAD() : base()
+        public EmpleadoPerfilAD() : base()
         {
 
         }
-        public Producto ObtenerProducto(int idProducto)
+        public EmpleadoPerfil ObtenerEmpleadoPerfilPorEmpleado(string idEmpleado)
         {
-            Producto producto = new Producto();
+            EmpleadoPerfil empleadoPerfil = new EmpleadoPerfil();
             using (var bd = new Base())
             {
                 try
@@ -27,16 +27,15 @@ namespace AccesoDatos
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ObtenerProducto";
-                    comando.Parameters.Add(new SqlParameter("@idProducto", idProducto));
+                    comando.CommandText = "ObtenerEmpleadoPerfilPorEmpleado";
+                    comando.Parameters.Add(new SqlParameter("@idEmpleado", idEmpleado));
                     reader = comando.ExecuteReader();
                     try
                     {
                         if (reader.Read())
                         {
-                            producto.IdProducto = Convert.ToInt32(reader["IdProducto"]);
-                            producto.Nombre = Convert.ToString(reader["Nombre"]);
-                            producto.Descripcion = Convert.ToString(reader["Descripcion"]);
+                            empleadoPerfil.Empleado = new Empleado() { IdUsuario = Convert.ToString(reader["IdUsuario"]) };
+                            empleadoPerfil.Perfil = new Perfil() { IdPerfil = Convert.ToByte(reader["IdPerfil"]) };
                         }
                     }
                     finally
@@ -52,11 +51,11 @@ namespace AccesoDatos
                     throw;
                 }
             }
-            return producto;
+            return empleadoPerfil;
         }
-        public List<Producto> ListarProductos()
+        public List<EmpleadoPerfil> ListarEmpleadoPerfiles()
         {
-            List<Producto> productos = new List<Producto>();
+            List<EmpleadoPerfil> empleadoPerfiles = new List<EmpleadoPerfil>();
             using (var bd = new Base())
             {
                 try
@@ -66,20 +65,19 @@ namespace AccesoDatos
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ListarProducto";
+                    comando.CommandText = "ListarEmpleadoPerfil";
                     reader = comando.ExecuteReader();
                     try
                     {
-                        Producto producto;
+                        EmpleadoPerfil empleadoPerfil;
                         while (reader.Read())
                         {
-                            producto = new Producto()
+                            empleadoPerfil = new EmpleadoPerfil()
                             {
-                                IdProducto = Convert.ToInt32(reader["IdProducto"]),
-                                Nombre = Convert.ToString(reader["Nombre"]),
-                                Descripcion = Convert.ToString(reader["Descripcion"])
+                                Empleado = new Empleado() { IdUsuario = Convert.ToString(reader["IdUsuario"]) },
+                                Perfil = new Perfil() { IdPerfil = Convert.ToByte(reader["IdPerfil"]) }
                             };
-                            productos.Add(producto);
+                            empleadoPerfiles.Add(empleadoPerfil);
                         };
                     }
                     finally
@@ -101,9 +99,9 @@ namespace AccesoDatos
                     throw;
                 }
             }
-            return productos;
+            return empleadoPerfiles;
         }
-        public void InsertarProducto(Producto producto)
+        public void InsertarEmpleadoPerfiles(EmpleadoPerfil empleadoPerfil)
         {
             using (var bd = new Base())
             {
@@ -113,9 +111,9 @@ namespace AccesoDatos
 
                     SqlCommand comando = new SqlCommand();
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "InsertarProducto";
-                    comando.Parameters.Add(new SqlParameter("@nombre", producto.Nombre));
-                    comando.Parameters.Add(new SqlParameter("@descripcion", producto.Descripcion));
+                    comando.CommandText = "InsertarEmpleadoPerfil";
+                    comando.Parameters.Add(new SqlParameter("@idUsuario", empleadoPerfil.Empleado.IdUsuario));
+                    comando.Parameters.Add(new SqlParameter("@idPerfil", empleadoPerfil.Perfil.IdPerfil));
                     comando.ExecuteNonQuery();
 
                     bd.ConfirmarTransaccion();
@@ -127,7 +125,7 @@ namespace AccesoDatos
                 }
             }
         }
-        public void ActualizarProducto(Producto producto)
+        public void EliminarEmpleadoPerfilPorEmpleado(string idUsuario)
         {
             using (var bd = new Base())
             {
@@ -137,33 +135,8 @@ namespace AccesoDatos
 
                     SqlCommand comando = new SqlCommand();
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ActualizarProducto";
-                    comando.Parameters.Add(new SqlParameter("@idProducto", producto.IdProducto));
-                    comando.Parameters.Add(new SqlParameter("@nombre", producto.Nombre));
-                    comando.Parameters.Add(new SqlParameter("@idUsuario", producto.Descripcion));
-                    comando.ExecuteNonQuery();
-
-                    bd.ConfirmarTransaccion();
-                }
-                catch (Exception)
-                {
-                    bd.RevertirTransaccion();
-                    throw;
-                }
-            }
-        }
-        public void EliminarProducto(int idProducto)
-        {
-            using (var bd = new Base())
-            {
-                try
-                {
-                    bd.IniciarTransaccion();
-
-                    SqlCommand comando = new SqlCommand();
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "EliminarProducto";
-                    comando.Parameters.Add(new SqlParameter("@idFactura", idProducto));
+                    comando.CommandText = "EliminarEmpleadoPerfilPorEmpleado";
+                    comando.Parameters.Add(new SqlParameter("@idUsuario", idUsuario));
                     comando.ExecuteNonQuery();
 
                     bd.ConfirmarTransaccion();
