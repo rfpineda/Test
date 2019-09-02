@@ -50,5 +50,11 @@
     <Compile Include="Empleado.cs" />
     <Compile Include="EmpleadoPerfil.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilitarios\Utilitarios.csproj">
+      <Project>{6e929283-766e-46ad-ad28-3d85f965e29b}</Project>
+      <Name>Utilitarios</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

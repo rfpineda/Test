@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilitarios;
 
 namespace LogicaNegocio
 {
@@ -109,6 +110,8 @@ namespace LogicaNegocio
                     if (empleado == null)
                         throw new ArgumentNullException("empleado");
 
+                    empleado.Contrasena = Criptografia.EncryptData(empleado.Contrasena, System.Configuration.ConfigurationManager.AppSettings["encriptionKey"].ToString());
+
                     new EmpleadoAD().ActualizarEmpleado(empleado);
                 }
                 catch (Exception ex)
@@ -134,7 +137,7 @@ namespace LogicaNegocio
                 }
             });
         }
-        public static Task InsertarUsuario(Empleado empleado)
+        public static Task InsertarEmpleado(Empleado empleado)
         {
             return Task.Run(() =>
             {
@@ -142,6 +145,8 @@ namespace LogicaNegocio
                 {
                     if (empleado == null)
                         throw new ArgumentNullException("empleado");
+
+                    empleado.Contrasena = Criptografia.EncryptData(empleado.Contrasena, System.Configuration.ConfigurationManager.AppSettings["encriptionKey"].ToString()); 
 
                     new EmpleadoAD().InsertarEmpleado(empleado);
                 }

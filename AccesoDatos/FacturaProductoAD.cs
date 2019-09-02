@@ -15,7 +15,7 @@ namespace AccesoDatos
         {
 
         }
-        public FacturaProducto ObtenerFacturaProducto(int idFacturaProducto)
+        public FacturaProducto ObtenerFacturaProducto(int idFactura, int idProducto)
         {
             FacturaProducto facturaProducto = new FacturaProducto();
             using (var bd = new Base())
@@ -28,7 +28,8 @@ namespace AccesoDatos
                     SqlCommand comando = new SqlCommand();
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.CommandText = "ObtenerFacturaProducto";
-                    comando.Parameters.Add(new SqlParameter("@idFacturaProducto", idFacturaProducto));
+                    comando.Parameters.Add(new SqlParameter("@idFactura", idFactura));
+                    comando.Parameters.Add(new SqlParameter("@idProducto", idProducto));
                     reader = comando.ExecuteReader();
                     try
                     {

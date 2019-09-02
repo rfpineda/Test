@@ -15,44 +15,6 @@ namespace AccesoDatos
         {
 
         }
-        public EmpleadoPerfil ObtenerEmpleadoPerfilPorEmpleado(string idEmpleado)
-        {
-            EmpleadoPerfil empleadoPerfil = new EmpleadoPerfil();
-            using (var bd = new Base())
-            {
-                try
-                {
-                    bd.IniciarTransaccion();
-
-                    SqlDataReader reader;
-                    SqlCommand comando = new SqlCommand();
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ObtenerEmpleadoPerfilPorEmpleado";
-                    comando.Parameters.Add(new SqlParameter("@idEmpleado", idEmpleado));
-                    reader = comando.ExecuteReader();
-                    try
-                    {
-                        if (reader.Read())
-                        {
-                            empleadoPerfil.Empleado = new Empleado() { IdUsuario = Convert.ToString(reader["IdUsuario"]) };
-                            empleadoPerfil.Perfil = new Perfil() { IdPerfil = Convert.ToByte(reader["IdPerfil"]) };
-                        }
-                    }
-                    finally
-                    {
-                        reader.Close();
-                    }
-
-                    bd.ConfirmarTransaccion();
-                }
-                catch (Exception)
-                {
-                    bd.RevertirTransaccion();
-                    throw;
-                }
-            }
-            return empleadoPerfil;
-        }
         public List<EmpleadoPerfil> ListarEmpleadoPerfiles()
         {
             List<EmpleadoPerfil> empleadoPerfiles = new List<EmpleadoPerfil>();

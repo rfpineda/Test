@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{74AF0F05-F417-4C7E-A0F9-98A6ADDBE4F1}</ProjectGuid>
+    <ProjectGuid>{6E929283-766E-46AD-AD28-3D85F965E29B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LogicaNegocio</RootNamespace>
-    <AssemblyName>LogicaNegocio</AssemblyName>
+    <RootNamespace>Utilitarios</RootNamespace>
+    <AssemblyName>Utilitarios</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,24 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administracion.cs" />
-    <Compile Include="Facturacion.cs" />
-    <Compile Include="Logistica.cs" />
+    <Compile Include="Criptografia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
-      <Project>{7f34d5ab-d25c-45be-b6b0-234c93989034}</Project>
-      <Name>AccesoDatos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{8e7a8994-9882-4bde-96d0-b52f158b386c}</Project>
-      <Name>Entidades</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utilitarios\Utilitarios.csproj">
-      <Project>{6E929283-766E-46AD-AD28-3D85F965E29B}</Project>
-      <Name>Utilitarios</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
