@@ -115,6 +115,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Frm_Login.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -183,6 +184,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Login.aspx.cs">
+      <DependentUpon>Frm_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Frm_Login.aspx.designer.cs">
+      <DependentUpon>Frm_Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,6 +235,14 @@
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{8e7a8994-9882-4bde-96d0-b52f158b386c}</Project>
       <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicaNegocio\LogicaNegocio.csproj">
+      <Project>{74af0f05-f417-4c7e-a0f9-98a6addbe4f1}</Project>
+      <Name>LogicaNegocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilitarios\Utilitarios.csproj">
+      <Project>{6e929283-766e-46ad-ad28-3d85f965e29b}</Project>
+      <Name>Utilitarios</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

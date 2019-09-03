@@ -10,3 +10,12 @@ C:\Users\pipex\Tabajo Personal y Laboral\Proyectos de Prueba\Test\Entidades\obj\
 C:\Users\pipex\Tabajo Personal y Laboral\Proyectos de Prueba\Test\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\pipex\Tabajo Personal y Laboral\Proyectos de Prueba\Test\Entidades\obj\Debug\Entidades.dll
 C:\Users\pipex\Tabajo Personal y Laboral\Proyectos de Prueba\Test\Entidades\obj\Debug\Entidades.pdb
+C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\bin\Debug\Entidades.dll
+C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\bin\Debug\Entidades.pdb
+C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\bin\Debug\Utilitarios.dll
+C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\bin\Debug\Utilitarios.pdb
+C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\obj\Debug\Entidades.csproj.CopyComplete
+C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\obj\Debug\Entidades.dll
+C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\obj\Debug\Entidades.pdb
