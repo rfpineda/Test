@@ -1,3 +1,3 @@
-select * from perfil;
---insert into perfil values('Administrador','ADMINISTRADOR');
---insert into perfil values('Participante','PARTICIPANTE');
+﻿select * from administracion.perfil;
+insert into administracion.perfil values('Administrador','ADMINISTRADOR');
+insert into administracion.perfil values('Participante','PARTICIPANTE');

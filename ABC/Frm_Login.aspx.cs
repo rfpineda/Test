@@ -24,10 +24,12 @@ namespace ABC
                 if (Page.IsValid)
                 {
                     Empleado empleado;
-                    String contrasenaDesencriptada;
+                    String contrasenaDesencriptada; 
+                    var uiScheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
-                    empleado = LogicaNegocio.Administracion.ListarEmpleado().GetAwaiter().GetResult().FirstOrDefault(x => x.IdUsuario.ToUpper().Equals(TxtEmpleado.Text.ToUpper()));
-                    if(empleado != null)
+                    empleado = LogicaNegocio.Administracion.ListarEmpleado().GetAwaiter().GetResult()
+                                                           .FirstOrDefault(x => x.IdUsuario.ToUpper().Equals(TxtEmpleado.Text.ToUpper()));
+                    if (empleado != null)
                     {
                         contrasenaDesencriptada = Utilitarios.Criptografia.DecryptData(empleado.Contrasena, System.Configuration.ConfigurationManager.AppSettings["encriptionKey"].ToString());
 
@@ -45,6 +47,10 @@ namespace ABC
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                
             }
         }
     }

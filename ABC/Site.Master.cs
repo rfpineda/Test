@@ -13,5 +13,11 @@ namespace ABC
         {
 
         }
+
+        protected void Btn_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.RemoveAll();
+        }
     }
 }

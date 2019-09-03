@@ -10,6 +10,7 @@
                     <div class="col-10 col-sm-9 col-md-7 col-lg-4 col-xl-4">
                         <div class="card mt-5">
                             <div class="card-body">
+                                <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
                                 <div class="form-group mt-3">
                                     <asp:TextBox ID="TxtEmpleado" runat="server" PlaceHolder="Empleado" Text=""></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="ReqValTxtUsuario" runat="server"

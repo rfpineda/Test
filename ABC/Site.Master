@@ -55,7 +55,7 @@
                         <li><a runat="server" href="~/Frm_Consulta_Clientes">Clientes</a></li>
                         <li><a runat="server" href="~/Frm_Consulta_Productos">Productos</a></li>
                         <li><a runat="server" href="~/ConFrm_Consulta_Facturas">Facturas</a></li>
-                        <li><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
+                        <li><asp:button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" runat="server" OnClick="Btn_Click"></asp:button>
                             <a class="navbar-nav" runat="server" href="~/Frm_Login.aspx">Logout</a>
                         </li>
                     </ul>
