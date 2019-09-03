@@ -95,6 +95,14 @@ LogicaNegocio/obj/
 LogicaNegocio/bin/
 Utilitarios/obj/
 Utilitarios/bin/
+AccesoDatos\obj
+AccesoDatos\bin
+Entidades\obj
+Entidades\bin
+LogicaNegocio\obj
+LogicaNegocio\bin
+Utilitarios\obj
+Utilitarios\bin
 bin
 obj
 
