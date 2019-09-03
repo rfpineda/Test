@@ -85,12 +85,16 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-ABC/obj
-ABC/bin
+ABC/obj/
+ABC/bin/
 AccesoDatos/obj/
 AccesoDatos/bin/
 Entidades/obj/
 Entidades/bin/
+LogicaNegocio/obj/
+LogicaNegocio/bin/
+Utilitarios/obj/
+Utilitarios/bin/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
