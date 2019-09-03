@@ -18,7 +18,7 @@ namespace AccesoDatos
         public Factura ObtenerFactura(int idFactura)
         {
             Factura factura = new Factura();
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
@@ -26,8 +26,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ObtenerFactura";
+                    comando.CommandText = "facturacion.ObtenerFactura";
                     comando.Parameters.Add(new SqlParameter("@idFactura", idFactura));
                     reader = comando.ExecuteReader();
                     try
@@ -59,7 +61,7 @@ namespace AccesoDatos
         public List<Factura> ListarFacturas()
         {
             List<Factura> facturas = new List<Factura>();
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
@@ -67,8 +69,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ListarFactura";
+                    comando.CommandText = "facturacion.ListarFactura";
                     reader = comando.ExecuteReader();
                     try
                     {
@@ -108,15 +112,17 @@ namespace AccesoDatos
         }
         public void InsertarFactura(Factura factura)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "InsertarFactura";
+                    comando.CommandText = "facturacion.InsertarFactura";
                     comando.Parameters.Add(new SqlParameter("@momentoCreacion", factura.MomentoCreacion));
                     comando.Parameters.Add(new SqlParameter("@idUsuario", factura.EmpleadoFacturador.IdUsuario));
                     comando.Parameters.Add(new SqlParameter("@idCliente", factura.Cliente.IdCliente));
@@ -133,15 +139,17 @@ namespace AccesoDatos
         }
         public void ActualizarFactura(Factura factura)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ActualizarFactura";
+                    comando.CommandText = "facturacion.ActualizarFactura";
                     comando.Parameters.Add(new SqlParameter("@idFactura", factura.IdFactura));
                     comando.Parameters.Add(new SqlParameter("@momentoCreacion", factura.MomentoCreacion));
                     comando.Parameters.Add(new SqlParameter("@idUsuario", factura.EmpleadoFacturador.IdUsuario));
@@ -159,15 +167,17 @@ namespace AccesoDatos
         }
         public void EliminarFactura(int idFactura)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "EliminarFactura";
+                    comando.CommandText = "facturacion.EliminarFactura";
                     comando.Parameters.Add(new SqlParameter("@idFactura", idFactura));
                     comando.ExecuteNonQuery();
 

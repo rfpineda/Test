@@ -18,7 +18,7 @@ namespace AccesoDatos
         public List<EmpleadoPerfil> ListarEmpleadoPerfiles()
         {
             List<EmpleadoPerfil> empleadoPerfiles = new List<EmpleadoPerfil>();
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
@@ -26,8 +26,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ListarEmpleadoPerfil";
+                    comando.CommandText = "administracion.ListarEmpleadoPerfil";
                     reader = comando.ExecuteReader();
                     try
                     {
@@ -65,15 +67,17 @@ namespace AccesoDatos
         }
         public void InsertarEmpleadoPerfiles(EmpleadoPerfil empleadoPerfil)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "InsertarEmpleadoPerfil";
+                    comando.CommandText = "administracion.InsertarEmpleadoPerfil";
                     comando.Parameters.Add(new SqlParameter("@idUsuario", empleadoPerfil.Empleado.IdUsuario));
                     comando.Parameters.Add(new SqlParameter("@idPerfil", empleadoPerfil.Perfil.IdPerfil));
                     comando.ExecuteNonQuery();
@@ -89,15 +93,17 @@ namespace AccesoDatos
         }
         public void EliminarEmpleadoPerfilPorEmpleado(string idUsuario)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "EliminarEmpleadoPerfilPorEmpleado";
+                    comando.CommandText = "administracion.EliminarEmpleadoPerfilPorEmpleado";
                     comando.Parameters.Add(new SqlParameter("@idUsuario", idUsuario));
                     comando.ExecuteNonQuery();
 

@@ -85,6 +85,10 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+AccesoDatos\obj\
+AccesoDatos\bin\
+Entidades\obj\
+Entidades\bin\
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/

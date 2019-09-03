@@ -18,7 +18,7 @@ namespace AccesoDatos
         public Producto ObtenerProducto(int idProducto)
         {
             Producto producto = new Producto();
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
@@ -26,8 +26,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ObtenerProducto";
+                    comando.CommandText = "logistica.ObtenerProducto";
                     comando.Parameters.Add(new SqlParameter("@idProducto", idProducto));
                     reader = comando.ExecuteReader();
                     try
@@ -57,7 +59,7 @@ namespace AccesoDatos
         public List<Producto> ListarProductos()
         {
             List<Producto> productos = new List<Producto>();
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
@@ -65,8 +67,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ListarProducto";
+                    comando.CommandText = "logistica.ListarProducto";
                     reader = comando.ExecuteReader();
                     try
                     {
@@ -105,15 +109,17 @@ namespace AccesoDatos
         }
         public void InsertarProducto(Producto producto)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "InsertarProducto";
+                    comando.CommandText = "logistica.InsertarProducto";
                     comando.Parameters.Add(new SqlParameter("@nombre", producto.Nombre));
                     comando.Parameters.Add(new SqlParameter("@descripcion", producto.Descripcion));
                     comando.ExecuteNonQuery();
@@ -129,15 +135,17 @@ namespace AccesoDatos
         }
         public void ActualizarProducto(Producto producto)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ActualizarProducto";
+                    comando.CommandText = "logistica.ActualizarProducto";
                     comando.Parameters.Add(new SqlParameter("@idProducto", producto.IdProducto));
                     comando.Parameters.Add(new SqlParameter("@nombre", producto.Nombre));
                     comando.Parameters.Add(new SqlParameter("@idUsuario", producto.Descripcion));
@@ -154,15 +162,17 @@ namespace AccesoDatos
         }
         public void EliminarProducto(int idProducto)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "EliminarProducto";
+                    comando.CommandText = "logistica.EliminarProducto";
                     comando.Parameters.Add(new SqlParameter("@idFactura", idProducto));
                     comando.ExecuteNonQuery();
 

@@ -18,7 +18,7 @@ namespace AccesoDatos
         public Cliente ObtenerCliente(string idCliente)
         {
             Cliente cliente = new Cliente();
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
@@ -26,8 +26,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ObtenerCliente";
+                    comando.CommandText = "administracion.ObtenerCliente";
                     comando.Parameters.Add(new SqlParameter("@idCliente", idCliente));
                     reader = comando.ExecuteReader();
                     try
@@ -58,7 +60,7 @@ namespace AccesoDatos
         public List<Cliente> ListarClientes()
         {
             List<Cliente> clientes = new List<Cliente>();
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
@@ -66,8 +68,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ListarCliente";
+                    comando.CommandText = "administracion.ListarCliente";
                     reader = comando.ExecuteReader();
                     try
                     {
@@ -108,15 +112,17 @@ namespace AccesoDatos
         }
         public void InsertarCliente(Cliente cliente)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "InsertarCliente";
+                    comando.CommandText = "administracion.InsertarCliente";
                     comando.Parameters.Add(new SqlParameter("@nit", cliente.Nit));
                     comando.Parameters.Add(new SqlParameter("@nombre", cliente.Nombre));
                     comando.Parameters.Add(new SqlParameter("@descripcion", cliente.Descripcion));
@@ -133,15 +139,17 @@ namespace AccesoDatos
         }
         public void ActualizarCliente(Cliente cliente)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ActualizarCliente";
+                    comando.CommandText = "administracion.ActualizarCliente";
                     comando.Parameters.Add(new SqlParameter("@idCliente", cliente.IdCliente));
                     comando.Parameters.Add(new SqlParameter("@nit", cliente.Nit));
                     comando.Parameters.Add(new SqlParameter("@nombre", cliente.Nombre));
@@ -159,15 +167,17 @@ namespace AccesoDatos
         }
         public void EliminarCliente(string idCliente)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "EliminarCliente";
+                    comando.CommandText = "administracion.EliminarCliente";
                     comando.Parameters.Add(new SqlParameter("@idCliente", idCliente));
                     comando.ExecuteNonQuery();
 

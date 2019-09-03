@@ -19,3 +19,6 @@ C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\obj\Debug\Entidades.csproj.C
 C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\obj\Debug\Entidades.csproj.CopyComplete
 C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\obj\Debug\Entidades.dll
 C:\Users\felip\FELIPE-AGTI\PROYECTOS\Test\Entidades\obj\Debug\Entidades.pdb
+C:\Users\pipex\Tabajo Personal y Laboral\Proyectos de Prueba\Test\Entidades\bin\Debug\Utilitarios.dll
+C:\Users\pipex\Tabajo Personal y Laboral\Proyectos de Prueba\Test\Entidades\bin\Debug\Utilitarios.pdb
+C:\Users\pipex\Tabajo Personal y Laboral\Proyectos de Prueba\Test\Entidades\obj\Debug\Entidades.csproj.CopyComplete

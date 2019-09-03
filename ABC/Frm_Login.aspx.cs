@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace ABC
 {
@@ -24,18 +26,25 @@ namespace ABC
                     Empleado empleado;
                     String contrasenaDesencriptada;
 
-                    empleado = LogicaNegocio.Administracion.ListarEmpleado().Result.FirstOrDefault(x => x.IdUsuario.Equals(TxtEmpleado.Text));
-                    contrasenaDesencriptada = Utilitarios.Criptografia.DecryptData(empleado.Contrasena, System.Configuration.ConfigurationManager.AppSettings["encriptionKey"].ToString());
+                    empleado = LogicaNegocio.Administracion.ListarEmpleado().GetAwaiter().GetResult().FirstOrDefault(x => x.IdUsuario.ToUpper().Equals(TxtEmpleado.Text.ToUpper()));
+                    if(empleado != null)
+                    {
+                        contrasenaDesencriptada = Utilitarios.Criptografia.DecryptData(empleado.Contrasena, System.Configuration.ConfigurationManager.AppSettings["encriptionKey"].ToString());
 
-                    if (!empleado.Contrasena.Equals(contrasenaDesencriptada))
-                        Response.Write("<script>alert('Contraseña Invalida')</script>");
-
-
+                        if (TxtContrasena.Text.Equals(contrasenaDesencriptada))
+                        {
+                            Session.Clear();
+                            Session.RemoveAll();
+                            Session["EMPLEADO"] = empleado;
+                            Response.Redirect("~/Frm_Consulta_Empleados.aspx");
+                        }
+                    }
+                    MessageBox.Show("Usuario y Contraseña incorrectos.");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     }

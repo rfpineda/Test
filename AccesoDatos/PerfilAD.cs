@@ -18,7 +18,8 @@ namespace AccesoDatos
         public Perfil ObtenerPerfil(int idPerfil)
         {
             Perfil perfil = new Perfil();
-            using (var bd = new Base())
+
+            using (var bd = this)
             {
                 try
                 {
@@ -26,8 +27,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ObtenerPerfil";
+                    comando.CommandText = "administracion.ObtenerPerfil";
                     comando.Parameters.Add(new SqlParameter("@idPerfil", idPerfil));
                     reader = comando.ExecuteReader();
                     try
@@ -57,7 +60,8 @@ namespace AccesoDatos
         public List<Perfil> ListarPerfiles()
         {
             List<Perfil> perfiles = new List<Perfil>();
-            using (var bd = new Base())
+
+            using (var bd = this)
             {
                 try
                 {
@@ -65,8 +69,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ListarPerfil";
+                    comando.CommandText = "administracion.ListarPerfil";
                     reader = comando.ExecuteReader();
                     try
                     {

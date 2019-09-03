@@ -18,6 +18,14 @@ namespace AccesoDatos
         {
             get { return _transaccion != null; }
         }
+        public SqlTransaction Transaccion
+        {
+            get { return _transaccion;  }
+        }
+        public SqlConnection Conexion
+        {
+            get { return _conexion; }
+        }
         public void Dispose()
         {
             if (_transaccion != null)

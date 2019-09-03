@@ -18,7 +18,7 @@ namespace AccesoDatos
         public FacturaProducto ObtenerFacturaProducto(int idFactura, int idProducto)
         {
             FacturaProducto facturaProducto = new FacturaProducto();
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
@@ -26,8 +26,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ObtenerFacturaProducto";
+                    comando.CommandText = "facturacion.ObtenerFacturaProducto";
                     comando.Parameters.Add(new SqlParameter("@idFactura", idFactura));
                     comando.Parameters.Add(new SqlParameter("@idProducto", idProducto));
                     reader = comando.ExecuteReader();
@@ -59,7 +61,7 @@ namespace AccesoDatos
         public List<FacturaProducto> ListarFacturaProductos()
         {
             List<FacturaProducto> facturaProductos = new List<FacturaProducto>();
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
@@ -67,8 +69,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ListarFacturaProducto";
+                    comando.CommandText = "facturacion.ListarFacturaProducto";
                     reader = comando.ExecuteReader();
                     try
                     {
@@ -107,15 +111,17 @@ namespace AccesoDatos
         }
         public void InsertarFacturaProducto(FacturaProducto facturaProducto)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "InsertarFacturaProducto";
+                    comando.CommandText = "facturacion.InsertarFacturaProducto";
                     comando.Parameters.Add(new SqlParameter("@cantidad", facturaProducto.Cantidad));
                     comando.Parameters.Add(new SqlParameter("@idFactura", facturaProducto.Factura.IdFactura));
                     comando.Parameters.Add(new SqlParameter("@idProducto", facturaProducto.Producto.IdProducto));
@@ -132,15 +138,17 @@ namespace AccesoDatos
         }
         public void EliminarFacturaProductoPorFactura(int idFacturaProducto)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "EliminarFacturaProductoPorFactura";
+                    comando.CommandText = "facturacion.EliminarFacturaProductoPorFactura";
                     comando.Parameters.Add(new SqlParameter("@idFacturaProducto", idFacturaProducto));
                     comando.ExecuteNonQuery();
 

@@ -18,7 +18,7 @@ namespace AccesoDatos
         public Empleado ObtenerEmpleado(string idUsuario)
         {
             Empleado empleado = new Empleado();
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
@@ -26,8 +26,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ObtenerEmpleado";
+                    comando.CommandText = "administracion.ObtenerEmpleado";
                     comando.Parameters.Add(new SqlParameter("@idUsuario", idUsuario));
                     reader = comando.ExecuteReader();
                     try
@@ -59,7 +61,7 @@ namespace AccesoDatos
         public List<Empleado> ListarEmpleados()
         {
             List<Empleado> empleados = new List<Empleado>();
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
@@ -67,8 +69,10 @@ namespace AccesoDatos
 
                     SqlDataReader reader;
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ListarEmpleado";
+                    comando.CommandText = "administracion.ListarEmpleado";
                     reader = comando.ExecuteReader();
                     try
                     {
@@ -81,7 +85,8 @@ namespace AccesoDatos
                                 Identificacion = Convert.ToInt32(reader["Identificacion"]),
                                 Nombre = Convert.ToString(reader["Nombre"]),
                                 PrimerApellido = Convert.ToString(reader["PrimerApellido"]),
-                                SegundoApellido = Convert.ToString(reader["SegundoApellido"])
+                                SegundoApellido = Convert.ToString(reader["SegundoApellido"]),
+                                Contrasena = Convert.ToString(reader["Contrasena"])
                             };
                             empleados.Add(empleado);
                         }
@@ -100,25 +105,27 @@ namespace AccesoDatos
                     }
                     bd.ConfirmarTransaccion();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     bd.RevertirTransaccion();
-                    throw;
+                    throw ex;
                 }
             }
             return empleados;
         }
         public void InsertarEmpleado(Empleado empleado)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "InsertarEmpleado";
+                    comando.CommandText = "administracion.InsertarEmpleado";
                     comando.Parameters.Add(new SqlParameter("@idUsuario", empleado.IdUsuario));
                     comando.Parameters.Add(new SqlParameter("@identificacion", empleado.Identificacion));
                     comando.Parameters.Add(new SqlParameter("@PrimerApellido", empleado.Nombre));
@@ -138,15 +145,17 @@ namespace AccesoDatos
         }
         public void ActualizarEmpleado(Empleado empleado)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ActualizarEmpleado";
+                    comando.CommandText = "administracion.ActualizarEmpleado";
                     comando.Parameters.Add(new SqlParameter("@idUsuario", empleado.IdUsuario));
                     comando.Parameters.Add(new SqlParameter("@identificacion", empleado.Identificacion));
                     comando.Parameters.Add(new SqlParameter("@PrimerApellido", empleado.Nombre));
@@ -166,15 +175,17 @@ namespace AccesoDatos
         }
         public void EliminarEmpleado(string idUsuario)
         {
-            using (var bd = new Base())
+            using (var bd = this)
             {
                 try
                 {
                     bd.IniciarTransaccion();
 
                     SqlCommand comando = new SqlCommand();
+                    comando.Connection = bd.Conexion;
+                    comando.Transaction = bd.Transaccion;
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "EliminarEmpleado";
+                    comando.CommandText = "administracion.EliminarEmpleado";
                     comando.Parameters.Add(new SqlParameter("@idUsuario", idUsuario));
                     comando.ExecuteNonQuery();
 
