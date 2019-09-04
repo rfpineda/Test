@@ -15,11 +15,12 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    
+    <script src="~/Scripts/main.js" type="text/javascript"></script>
 </head>
 <body>
     <form runat="server">
-        <asp:ScriptManager runat="server">
+        <asp:ScriptManager runat="server" EnablePageMethods="true">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
@@ -38,7 +39,6 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -55,8 +55,9 @@
                         <li><a runat="server" href="~/Frm_Consulta_Clientes">Clientes</a></li>
                         <li><a runat="server" href="~/Frm_Consulta_Productos">Productos</a></li>
                         <li><a runat="server" href="~/ConFrm_Consulta_Facturas">Facturas</a></li>
-                        <li><asp:button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" runat="server" OnClick="Btn_Click"></asp:button>
-                            <a class="navbar-nav" runat="server" href="~/Frm_Login.aspx">Logout</a>
+                        <li>
+                            <asp:LinkButton ID="logout" Text="Logout" OnClick="Btn_Click" runat="server" >
+                            </asp:LinkButton>
                         </li>
                     </ul>
                 </div>

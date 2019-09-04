@@ -65,7 +65,7 @@ namespace AccesoDatos
             }
             return empleadoPerfiles;
         }
-        public void InsertarEmpleadoPerfiles(EmpleadoPerfil empleadoPerfil)
+        public void InsertarEmpleadoPerfil(EmpleadoPerfil empleadoPerfil)
         {
             using (var bd = this)
             {

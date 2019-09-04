@@ -1,6 +1,6 @@
-﻿<%@ Page Title="Empleados" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Frm_Consulta_Empleados.aspx.cs" Inherits="ABC.Frm_Consulta_Empleados" %>
+﻿<%@ Page Title="Productos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Frm_Consulta_Productos.aspx.cs" Inherits="ABC.Frm_Consulta_Productos" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">    
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdatePanel ID="updPnlPpal" runat="server">
         <ContentTemplate>
             <br />
@@ -8,7 +8,7 @@
             <div class="bg-light container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="mb-3">Consulta Empleado</h4>
+                        <h4 class="mb-3">Consulta Productos</h4>
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
                                 <asp:Literal ID="LtNombre" runat="server" Text="Nombre"></asp:Literal>
@@ -25,23 +25,24 @@
                     </div>
                     <div class="col-md-1">
                         <asp:Button ID="BtnCrear" runat="server" Style="padding: 5px; font-size: 1em;"
-                            class="btn btn-primary btn-block" Text="Crear" OnClick="BtnCrear_Click" />
+                            class="btn btn-primary btn-block" Text="Crear" OnClick="BtnCrear_Click" Visible="false" />
                     </div>
                 </div>
                 <hr class="mb-4">
                 <div class="row">
                     <div class="col-12">
-                        <asp:GridView ID="GVEmpleados" runat="server" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" EmptyDataText="Sin Empleados para mostrar" OnRowCommand="GVEmpleados_RowCommand" OnRowDataBound="GVEmpleados_RowDataBound" >
+                        <asp:GridView ID="GVProductos" runat="server" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" EmptyDataText="Sin Productos para mostrar" OnRowCommand="GVProductos_RowCommand" OnRowDataBound="GVProductos_RowDataBound" >
                             <Columns>
-                                <asp:BoundField DataField="IdUsuario" HeaderStyle-Width="200px" ItemStyle-HorizontalAlign="Center" HeaderText="Usuario"/>
-                                <asp:BoundField DataField="Identificacion" HeaderStyle-Width="150px" ItemStyle-HorizontalAlign="Center" HeaderText="Identificacion"/>
-                                <asp:BoundField DataField="NombreCompleto" HeaderStyle-Width="400px" ItemStyle-HorizontalAlign="Center" HeaderText="Nombre Completo"/>
+                                <asp:BoundField DataField="IdProducto" HeaderStyle-Width="100px" ItemStyle-HorizontalAlign="Center" HeaderText="No."/>
+                                <asp:BoundField DataField="Nombre" HeaderStyle-Width="150px" ItemStyle-HorizontalAlign="Center" HeaderText="Nombre"/>
+                                <asp:BoundField DataField="Descripcion" HeaderStyle-Width="300px" ItemStyle-HorizontalAlign="Center" HeaderText="Descripción"/>
+                                <asp:BoundField DataField="Precio" HeaderStyle-Width="500px" ItemStyle-HorizontalAlign="Center" HeaderText="Precio"/>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LnkBtnEditarEmpleado" runat="server" Text="Editar Empleado" CausesValidation="False" CommandName="EDITAR_EMPLEADO" Visible="false">
+                                        <asp:LinkButton ID="LnkBtnEditarProducto" runat="server" Text="Editar Producto" CausesValidation="False" CommandName="EDITAR_PRODUCTO" Visible="false">
                                                             <i class="fa fa-pencil">Editar</i>
                                         </asp:LinkButton>         
-                                        <asp:LinkButton ID="LnkBtnEliminarEmpleado" runat="server" Text="Eliminar Empleado" CausesValidation="False" CommandName="ELIMINAR_EMPLEADO" Visible="false">
+                                        <asp:LinkButton ID="LnkBtnEliminarProducto" runat="server" Text="Eliminar Producto" CausesValidation="False" CommandName="ELIMINAR_PRODUCTO" Visible="false">
                                                             <i class="fa fa-trash-o">Eliminar</i>
                                         </asp:LinkButton> 
                                     </ItemTemplate>

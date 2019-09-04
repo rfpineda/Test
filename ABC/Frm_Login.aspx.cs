@@ -48,10 +48,6 @@ namespace ABC
             {
                 throw ex;
             }
-            finally
-            {
-                
-            }
         }
     }
 }

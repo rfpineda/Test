@@ -62,7 +62,7 @@ namespace LogicaNegocio
                 }
             });
         }
-        public static Task<List<Producto>> ListarProducto()
+        public static Task<List<Producto>> ListarProductos()
         {
             return Task.Run(() =>
             {

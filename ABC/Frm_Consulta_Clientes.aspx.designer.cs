@@ -10,7 +10,7 @@
 namespace ABC {
     
     
-    public partial class Frm_Consulta_Empleados {
+    public partial class Frm_Consulta_Clientes {
         
         /// <summary>
         /// Control updPnlPpal.
@@ -58,12 +58,12 @@ namespace ABC {
         protected global::System.Web.UI.WebControls.Button BtnCrear;
         
         /// <summary>
-        /// Control GVEmpleados.
+        /// Control GVClientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GVEmpleados;
+        protected global::System.Web.UI.WebControls.GridView GVClientes;
     }
 }

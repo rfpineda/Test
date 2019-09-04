@@ -112,6 +112,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="css\all.css" />
     <Content Include="css\all.min.css" />
@@ -129,7 +131,10 @@
     <Content Include="css\v4-shims.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Frm_Consulta_Productos.aspx" />
+    <Content Include="Frm_Consulta_Clientes.aspx" />
     <Content Include="Frm_Consulta_Empleados.aspx" />
     <Content Include="Frm_Login.aspx" />
     <Content Include="Global.asax" />
@@ -141,6 +146,11 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -148,6 +158,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -199,6 +210,20 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Consulta_Productos.aspx.cs">
+      <DependentUpon>Frm_Consulta_Productos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Frm_Consulta_Productos.aspx.designer.cs">
+      <DependentUpon>Frm_Consulta_Productos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Consulta_Clientes.aspx.cs">
+      <DependentUpon>Frm_Consulta_Clientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Frm_Consulta_Clientes.aspx.designer.cs">
+      <DependentUpon>Frm_Consulta_Clientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Frm_Consulta_Empleados.aspx.cs">
       <DependentUpon>Frm_Consulta_Empleados.aspx</DependentUpon>

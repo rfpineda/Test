@@ -198,6 +198,9 @@ GO
 IF OBJECT_ID('administracion.ListarEmpleadoPerfilPorEmpleado' , 'P') IS NOT NULL
 	DROP PROCEDURE administracion.ListarEmpleadoPerfilPorEmpleado
 GO
+IF OBJECT_ID('administracion.ListarEmpleadoPerfil' , 'P') IS NOT NULL
+	DROP PROCEDURE administracion.ListarEmpleadoPerfil
+GO
 CREATE PROCEDURE administracion.EliminarEmpleadoPerfilPorEmpleado
 (
 	@idUsuario VARCHAR(50)
@@ -239,6 +242,14 @@ BEGIN
 		*
 	FROM administracion.EmpleadoPerfil
 	WHERE IdUsuario = @idUsuario
+END
+GO
+CREATE PROCEDURE administracion.ListarEmpleadoPerfil
+AS
+BEGIN
+	SELECT
+		*
+	FROM administracion.EmpleadoPerfil
 END
 GO
 -- Perfil

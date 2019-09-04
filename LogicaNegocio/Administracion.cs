@@ -29,7 +29,7 @@ namespace LogicaNegocio
                 }
             });
         }
-        public static Task EliminarCliente(string idCliente)
+        public static Task EliminarCliente(int idCliente)
         {
             return Task.Run(() =>
             {
@@ -129,6 +129,7 @@ namespace LogicaNegocio
                     if (idUsuario.Equals(""))
                         throw new ArgumentNullException("empleado");
 
+                    new EmpleadoPerfilAD().EliminarEmpleadoPerfilPorEmpleado(idUsuario);
                     new EmpleadoAD().EliminarEmpleado(idUsuario);
                 }
                 catch (Exception ex)
@@ -190,6 +191,102 @@ namespace LogicaNegocio
                 }
 
                 return empleado;
+            });
+        }
+        #endregion
+        #region EmpleadoPerfil
+        public static Task EliminarEmpleadoPerfil(string idUsuario)
+        {
+            return Task.Run(() =>
+            {
+                try
+                {
+                    if (idUsuario.Equals(""))
+                        throw new ArgumentNullException("empleadoPerfil");
+
+                    new EmpleadoPerfilAD().EliminarEmpleadoPerfilPorEmpleado(idUsuario);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            });
+        }
+        public static Task InsertarEmpleadoPerfil(EmpleadoPerfil empleadoPerfil)
+        {
+            return Task.Run(() =>
+            {
+                try
+                {
+                    if (empleadoPerfil == null)
+                        throw new ArgumentNullException("empleadoPerfil");
+                    
+                    new EmpleadoPerfilAD().InsertarEmpleadoPerfil(empleadoPerfil);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            });
+        }
+        public static Task<List<EmpleadoPerfil>> ListarEmpleadoPerfil()
+        {
+            return Task.Run(() =>
+            {
+                List<EmpleadoPerfil> empleadoPerfiles;
+
+                try
+                {
+                    empleadoPerfiles = new EmpleadoPerfilAD().ListarEmpleadoPerfiles();
+                    foreach (var empleadoPerfil in empleadoPerfiles)
+                    {
+                        empleadoPerfil.Perfil = new PerfilAD().ObtenerPerfil(empleadoPerfil.Perfil.IdPerfil);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                return empleadoPerfiles;
+            });
+        }
+        #endregion
+        #region Perfil
+        public static Task<List<Perfil>> ListarPerfil()
+        {
+            return Task.Run(() =>
+            {
+                List<Perfil> perfiles;
+
+                try
+                {
+                    perfiles = new PerfilAD().ListarPerfiles();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                return perfiles;
+            });
+        }
+        public static Task<Perfil> ObtenerPerfil(int idPerfil)
+        {
+            return Task.Run(() =>
+            {
+                Perfil perfil;
+
+                try
+                {
+                    perfil = new PerfilAD().ObtenerPerfil(idPerfil);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                return perfil;
             });
         }
         #endregion

@@ -11,13 +11,14 @@ namespace ABC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void Btn_Click(object sender, EventArgs e)
         {
             Session.Clear();
             Session.RemoveAll();
+            Session["EMPLEADO"] = null;
+            Response.Redirect("~/Frm_Login.aspx");
         }
     }
 }

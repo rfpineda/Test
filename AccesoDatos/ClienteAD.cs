@@ -165,7 +165,7 @@ namespace AccesoDatos
                 }
             }
         }
-        public void EliminarCliente(string idCliente)
+        public void EliminarCliente(int idCliente)
         {
             using (var bd = this)
             {
