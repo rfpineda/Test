@@ -129,7 +129,7 @@ namespace ABC
                 switch (e.CommandName)
                 {
                     case "EDITAR_FACTURA":
-                        Response.Redirect("./Frm_Editar_Producto.aspx?idFactura=" + idFactura);
+                        Response.Redirect("./Frm_Editar_Factura.aspx?idFactura=" + idFactura);
                         break;
                     case "ELIMINAR_FACTURA":
                         LogicaNegocio.Facturacion.EliminarFactura(idFactura).GetAwaiter().GetResult();

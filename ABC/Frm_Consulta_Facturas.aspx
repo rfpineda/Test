@@ -35,7 +35,7 @@
                 <hr class="mb-4">
                 <div class="row">
                     <div class="col-12">
-                        <asp:GridView ID="GVFacturas" runat="server" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" EmptyDataText="Sin Facturas para mostrar" OnRowCommand="GVProductos_RowCommand" OnRowDataBound="GVProductos_RowDataBound" >
+                        <asp:GridView ID="GVFacturas" runat="server" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" EmptyDataText="Sin Facturas para mostrar" OnRowCommand="GVFacturas_RowCommand" OnRowDataBound="GVFacturas_RowDataBound" >
                             <Columns>
                                 <asp:BoundField DataField="IdFactrura" HeaderStyle-Width="100px" ItemStyle-HorizontalAlign="Center" HeaderText="No."/>
                                 <asp:BoundField DataField="Cliente.Nombre" HeaderStyle-Width="300px" ItemStyle-HorizontalAlign="Center" HeaderText="Cliente"/>
