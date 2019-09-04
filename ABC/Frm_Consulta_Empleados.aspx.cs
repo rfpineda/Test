@@ -78,7 +78,6 @@ namespace ABC
 
                     if (empleado != null)
                     {
-                        //Habilitacion de Editar Variable
                         if (usuarioPerfiles.Any(x => x.Perfil.Codigo.Contains("ADMINISTRADOR")))
                         {
                             var button = (LinkButton)e.Row.FindControl("LnkBtnEditarEmpleado");

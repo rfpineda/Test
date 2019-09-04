@@ -133,6 +133,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Frm_Consulta_Facturas.aspx" />
     <Content Include="Frm_Consulta_Productos.aspx" />
     <Content Include="Frm_Consulta_Clientes.aspx" />
     <Content Include="Frm_Consulta_Empleados.aspx" />
@@ -210,6 +211,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Consulta_Facturas.aspx.cs">
+      <DependentUpon>Frm_Consulta_Facturas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Frm_Consulta_Facturas.aspx.designer.cs">
+      <DependentUpon>Frm_Consulta_Facturas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Frm_Consulta_Productos.aspx.cs">
       <DependentUpon>Frm_Consulta_Productos.aspx</DependentUpon>
